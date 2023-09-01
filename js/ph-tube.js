@@ -18,37 +18,32 @@ const handleCategory = async () => {
 }
 
 const handleLoadVideos = async (categoryId) => {
-    console.log(categoryId)
+
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
     const data = await response.json()
-    console.log(data.data.length)
+    
     const warningContainer = document.getElementById("warning-container")
-    warningContainer.innerHTML = " "
+    
     if(data.data.length === 0) {
-        const div = document.createElement("div")
-        div.setAttribute("class", "mt-24")
-        div.innerHTML = `
-        <div class="flex justify-center mb-6">
-        <img class="text-center" src="./images/Icon.png">
-        </div>
-        <h1 class="font-bold text-2xl text-center">Oops!! Sorry, There is no <br> content here</h1>
-        `
-        warningContainer.appendChild(div)
+        warningContainer.classList.remove("hidden")
+    }
+    else{
+        warningContainer.classList.add("hidden")
     }
     const cardContainer = document.getElementById("card-container");
     cardContainer.textContent = " "
     data.data.forEach(video => {
-        console.log(video)
+
         const div = document.createElement("div")
         div.innerHTML = `
         <div class="card">
-        <figure><img class="w-full h-[200px]" src='${video.thumbnail
+        <figure><img class="w-full h-[200px] rounded-xl" src='${video.thumbnail
             }'></figure>
-        <div class="flex justify-end relative mr-4">
-            <div  class="w-fit p-1 absolute bottom-[20px] rounded-sm">
-                <p id="time-container" class="text-white text-[10px]">${timeConverter(video.others.posted_date)}</p>
+        <div id="time-container" class="flex justify-end relative mr-4">
+            <div  class="w-fit p-1 absolute bottom-[10px] rounded-sm">
+                <p class="text-white text-[10px] bg-black">${timeConverter(video.others.posted_date)}</p>
             </div>
-        </div>
+        </div> 
 
         <div class="flex gap-3 mt-8">
             <img class="h-14 w-14  rounded-full" src='${video.authors[0].profile_picture}' alt="">
@@ -66,18 +61,16 @@ const handleLoadVideos = async (categoryId) => {
 
     cardContainer.appendChild(div)
 
-
     })
+
 
 }
 
-
 const timeConverter = (sec) => {
-    if (!sec) {
-        document.getElementById("time-container").classList.add = "invisible";
-        return ''
+    if(!sec) {
+        return '';
     }
-    else {
+    else{
         const hrs = Math.floor(sec / 3600);
         const min = Math.floor((sec - (hrs * 3600)) / 60);
         if (hrs >= 24) {
@@ -88,12 +81,18 @@ const timeConverter = (sec) => {
             }
             return `${days} days ago`
         }
-        return `${hrs} hrs ${min} min ago`;
+        return `${hrs} hrs ${min} min ago`; 
     }
 
-    
 }
 
+const openBlog = () => {
+    window.location.href = "blog.html";
+}
+const goHome = () => {
+    window.location.href = "index.html"
+}
 
 handleLoadVideos("1000")
 handleCategory()
+

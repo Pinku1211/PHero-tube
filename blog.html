@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en", data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-10">
+    <header>
+        <h1 class="font-bold text-2xl ">Questionnaire:</h1>
+    </header>
+    <main>
+        <h3 class="font-bold text-lg mt-4">1. Discuss the scope of var, let, and const</h3>
+        <p><span class="font-bold text-sm">Ans:</span> While 'let' and 'const' declarations are block scoped, 'var' declarations are either globally scoped
+            or function scoped.
+            'let' variables can be updated but not re-declared, 'const' variables cannot be updated or re-declared,
+            and 'var' variables can both be updated and re-declared inside their scope.
+            Each of them is hoisted of their scope. However, 'let' and 'const' variables are not initialized, but
+            'var' variables are initialized with undefined.
+        </p>
+        <h3 class="font-bold text-lg mt-4">2. Tell us the use cases of null and undefined</h1>
+        <p><span class="font-bold text-sm">Ans:</span>
+        <h5 class="font-bold text-sm">Null:</h5>
+        Null is essentially a variable's assigned value. The variable that has been marked as null is empty.
+        Any variable that has the value null assigned to it is considered to be empty or blank. It demonstrates
+        that the variable is meaningless. In JavaScript, null is also an object. It has no meaning when it is
+        applied to a variable. Since JavaScript never changes the value to null, the user must explicitly set
+        the value. Setting an item to "empty" will cause it to null.
+        <h5 class="font-bold text-sm">undefined:</h5>
+        Undefined, as the name implies, is defined as "not defined". As a result, when a variable is declared
+        but not given a value, it is said to be undefined.
+        In contrast to null, JavaScript declares an undefined variable's value to be undefined. At runtime, the
+        variable is generated. When a function parameter is not sent an argument, the default value is assumed
+        to be undefined. Additionally, a function returns undefined when it doesn't produce a value.
+        </p>
+        <h3 class="font-bold text-lg mt-4">3. What do you mean by REST API?</h3>
+        <p><span class="font-bold text-sm">Ans:</span>
+            A collection of guidelines and standards called a REST API (Representational State Transfer Application Programming Interface) are used to create web services. It places an emphasis on statelessness, offers a consistent and layered design, employs HTTP protocols for operations, represents resources with distinctive URIs, allows for diverse data formats, and stresses statelessness. Because of its simplicity, scalability, and capacity to link various software systems together over the internet, REST APIs are well-liked in the web development community.
+        </p>
+    </main>
+    <footer>
+        
+    </footer>
+</body>
+
+</html>
