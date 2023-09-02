@@ -1,15 +1,16 @@
+const tabContainer = document.getElementById("tab-container")
+
 const handleCategory = async () => {
     const response = await fetch("https://openapi.programming-hero.com/api/videos/categories")
     const data = await response.json()
-    const tabContainer = document.getElementById("tab-container")
+    
     data.data.forEach(category => {
         const div = document.createElement("div")
         div.innerHTML = `
         <button onclick="handleLoadVideos('${category.category_id}'); sortByViewId('${category.category_id}')" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-gray-200 rounded-sm lg:rounded-md hover:bg-[#f35d71] hover:text-white focus:bg-[#f35d71] focus:text-white normal-case">${category.category}</button>
         `;
         tabContainer.appendChild(div)
-        
-    });  
+    })
 }
 
 const handleLoadVideos = async (categoryId) => {
@@ -22,6 +23,8 @@ const handleLoadVideos = async (categoryId) => {
     else{
         warningContainer.classList.add("hidden")
     }
+    
+
     displayVideos(data.data)
 }    
 
@@ -96,6 +99,7 @@ const dataSorting = (data) => {
         const bValue = parseValue(b.others.views);
         return bValue - aValue;
       });
+
       document.getElementById("sort-by-view").addEventListener("click", function(){
         displayVideos(dataArray)
       })
