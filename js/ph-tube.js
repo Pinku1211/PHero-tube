@@ -7,7 +7,7 @@ const handleCategory = async () => {
     data.data.forEach(category => {
         const div = document.createElement("div")
         div.innerHTML = `
-        <button onclick="handleLoadVideos('${category.category_id}'); sortByViewId('${category.category_id}')" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-gray-200 rounded-sm lg:rounded-md hover:bg-[#f35d71] hover:text-white focus:bg-[#f35d71] focus:text-white normal-case">${category.category}</button>
+        <button onclick="handleLoadVideos('${category.category_id}')" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-gray-200 rounded-sm lg:rounded-md hover:bg-[#f35d71] hover:text-white focus:bg-[#f35d71] focus:text-white normal-case">${category.category}</button>
         `;
         tabContainer.appendChild(div)
     })
@@ -24,8 +24,8 @@ const handleLoadVideos = async (categoryId) => {
         warningContainer.classList.add("hidden")
     }
     
-
     displayVideos(data.data)
+    dataSorting(data)
 }    
 
 const displayVideos = (dataArray) => {
@@ -80,12 +80,6 @@ const timeConverter = (sec) => {
 
 const openBlog = () => {
     window.location.href = "blog.html";
-}
-
-const sortByViewId = async (categoryId) => {
-    const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
-    const data = await response.json()
-    dataSorting(data)
 }
 
 const dataSorting = (data) => {
